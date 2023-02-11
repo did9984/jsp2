@@ -10,8 +10,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-@WebServlet("/hi")
-public class Nana extends HttpServlet {
+@WebServlet("/notice-reg")
+public class NoticeReg extends HttpServlet {
 	
 	@Override
 	protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -22,18 +22,11 @@ public class Nana extends HttpServlet {
 		
 		PrintWriter out = resp.getWriter(); // 자바에서 html 글을 나오게 하는 태그  
 		
-		String cnt_ =req.getParameter("cnt");
-
-	
-		
-		int cnt =100; //cnt 의 값을 임시 지정 
-		if (cnt_ != null && !cnt_.equals("")) { //만약 cnt 값이 없다면 100을 불러와서 주소창에 입력  
-			cnt = Integer.parseInt(cnt_); // url 옆에 ? cnt =숫자 입력시 값 주기 가능 
-		}
-		  
-		
-		for (int i = 0; i<cnt; i++)
-			out.println((i+1)+":안녕 servelet! <br>");
+		String title =req.getParameter("title"); //넘겨받을 html input name 값 입력
+		String content =req.getParameter("content"); //  넘겨받을 html textarea name 값 입력 
+	    
+		out.println(title); // 넘겨받은 값을 value 를 출력
+		out.println(content); // 넘겨받은 content.value 값을 출력 
 		
 	}
 
