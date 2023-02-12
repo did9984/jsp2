@@ -82,7 +82,7 @@ public class Calc2 extends HttpServlet {
 
 			Cookie valuecookie = new Cookie("value", String.valueOf(v));
 			Cookie opcookie = new Cookie("op", op);
-			valuecookie.setPath("/Calc2"); // 특정 경로에만 쿠키를 전달
+			valuecookie.setPath("/Calc2"); // 특정 경로에만 쿠키를 전달 
 			opcookie.setPath("/Calc2");
 			resp.addCookie(valuecookie);
 			resp.addCookie(opcookie);
