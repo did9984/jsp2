@@ -19,8 +19,10 @@ public class NoticeReg extends HttpServlet {
 		
 		resp.setCharacterEncoding("UTF-8"); // utf -8 로설정 
 	     resp.setContentType("text/html; charset:UTF-8"); // 브라우저가 utf-8로 읽어들이게 설정  
-		
+	
+	     
 		PrintWriter out = resp.getWriter(); // 자바에서 html 글을 나오게 하는 태그  
+//		req.setCharacterEncoding("UTF-8"); // form 으로 정보를 보낼때 한글을 인식하게해준다
 		
 		String title =req.getParameter("title"); //넘겨받을 html input name 값 입력
 		String content =req.getParameter("content"); //  넘겨받을 html textarea name 값 입력 
