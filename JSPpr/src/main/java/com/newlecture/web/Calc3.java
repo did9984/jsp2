@@ -17,8 +17,8 @@ import org.apache.catalina.tribes.ChannelSender;
 import org.apache.jasper.tagplugins.jstl.core.If;
 import org.eclipse.jdt.internal.compiler.codegen.Opcodes;
 
-@WebServlet("/Calc2")
-public class Calc2 extends HttpServlet {
+@WebServlet("/Calc3")
+public class Calc3 extends HttpServlet {
 
 	@Override
 	protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
