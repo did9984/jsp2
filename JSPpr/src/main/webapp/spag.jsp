@@ -8,8 +8,10 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<form action="spag">
+	
 		<%=request.getAttribute("result")%>입니다.
-	</form>
+		${result}<br>
+		${names[1]}<br>
+	    ${notice.title} 
 </body>
 </html>

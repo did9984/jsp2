@@ -1,6 +1,8 @@
 package com.newlecture.web;
 
 import java.io.IOException;
+import java.util.HashMap;
+import java.util.Map;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -29,6 +31,13 @@ public class Spag extends HttpServlet {
 // script src= 처럼 java를 jsp 로 연결하는코드 
 		
 		req.setAttribute("result", result); //"" 안의 값은 뭐가들어가도 상관x  
+		String[] names = {"newlec","dragon"};
+		req.setAttribute("names", names);
+		
+		Map<String,Object> notice = new HashMap<String,Object>();
+		notice.put("id", 1);
+		notice.put("title","EL은좋아요");
+		req.setAttribute("notice", notice);
 		
       RequestDispatcher dsipatcher = 
     		  req.getRequestDispatcher("spag.jsp"); //서블릿 ()안에 jsp 이름입력
