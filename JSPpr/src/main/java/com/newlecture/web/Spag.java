@@ -31,8 +31,8 @@ public class Spag extends HttpServlet {
 // script src= 처럼 java를 jsp 로 연결하는코드 
 		
 		req.setAttribute("result", result); //"" 안의 값은 뭐가들어가도 상관x  
-		String[] names = {"newlec","dragon"};
-		req.setAttribute("names", names);
+		String[] names = {"newlec","dragon"}; //키워드생성 
+		req.setAttribute("names", names);  // 키워드를 공유할수있게함 
 		
 		Map<String,Object> notice = new HashMap<String,Object>();
 		notice.put("id", 1);
