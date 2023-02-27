@@ -1,0 +1,134 @@
+@import url("https://fonts.googleapis.com/css2?family=Nanum+Gothic+Coding:wght@700&family=Poor+Story&display=swap");
+
+#container {
+  margin: 0 auto;
+  text-align: center;
+  margin-bottom: 100px;
+}
+
+.qna_contents {
+  border-collapse: collapse;
+  display: inline-block;
+}
+
+.qna_contents th,
+.qna_contents td {
+  border: 2px solid #ffc548;
+  height: 40px;
+}
+
+#left {
+  float: left;
+  margin-right: 6px;
+  font-size: 16px;
+  position: relative;
+  top: 130px;
+}
+
+#dd {
+  margin-left: 20px;
+}
+
+#qna_title {
+  height: 30px;
+  width: 250px;
+  margin-bottom: 10px;
+  font: 15px bold;
+}
+
+textarea {
+  resize: none;
+}
+
+.txt {
+  font-family: "Nanum Gothic Coding", monospace;
+}
+
+#qna_user_id {
+  height: 30px;
+  width: 168px;
+  margin-bottom: 10px;
+  font: 20px bold;
+  text-align: center;
+  border: none;
+  font-family: "Poor Story", cursive;
+}
+
+.pl {
+  width: 100px;
+  border: 1px solid #c4c4c4;
+  box-sizing: border-box;
+  border-radius: 10px;
+  padding: 10px 10px;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 16px;
+  margin: 10px;
+}
+
+#qna_content,
+#qna_title {
+  border-radius: 5px;
+  border-color: #ffc548;
+}
+
+.right {
+  position: relative;
+  left: 142px;
+}
+
+.pl:focus {
+  border: 1px solid #ffc548;
+  box-sizing: border-box;
+  border-radius: 10px;
+  outline: 3px solid #f8e4ff;
+}
+
+.ri2 {
+  position: relative;
+  left: 15px;
+}
+
+.btn_s input {
+  width: 120px;
+  padding: 10px;
+  margin: 15px;
+}
+
+.add {
+  background-color: #ffc548;
+  color: white;
+  border-radius: 10px;
+  border: 1px solid white;
+  font-family: "Nanum Gothic Coding", monospace;
+  font-weight: bold;
+}
+
+.add:hover {
+  background-color: white;
+  color: #ffc548;
+  border: 1px solid #ffc548;
+}
+
+.re:hover {
+  background-color: #ffc548;
+  color: white;
+  border: 1px solid white;
+}
+
+.re {
+  background-color: white;
+  color: #ffc548;
+  border-radius: 10px;
+  border: 1px solid #ffc548;
+  font-family: "Nanum Gothic Coding", monospace;
+  font-weight: bold;
+}
+
+.top_name {
+  font-family: "Nanum Gothic Coding", monospace;
+  font: 30px bold;
+  margin: 30px;
+  margin-top: 50px;
+}

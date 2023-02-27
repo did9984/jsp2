@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- namespace : 클래스 라고 생각하기 -->
+<mapper namespace="com.yedam.member.mapper.MemberMapper">
+
+
+	<select id="login" resultType="MemberVO">
+		SELECT * FROM member WHERE
+		user_id=#{userId} AND user_pw=#{userPw}
+	</select>
+
+	<select id="getIdFind" parameterType="string"
+		resultType="MemberVO">
+		SELECT user_id, user_name, user_email FROM member
+		WHERE
+		user_name= ${userName}
+		AND user_email= ${userEmail}
+	</select>
+
+	<select id="getPwFind" parameterType="string"
+		resultType="MemberVO">
+		SELECT user_id, user_pw, user_name, user_email FROM member
+		WHERE user_id = ${userId}
+		AND user_name = ${userName}
+		AND user_email =
+		${userEmail}
+	</select>
+
+	<select id="getMember" parameterType="string"
+		resultType="MemberVO">
+		SELECT * FROM member WHERE user_id=#{id}
+	</select>
+
+	<select id="idCheck" parameterType="string" resultType="int">
+		SELECT
+		COUNT(user_id) FROM member WHERE user_id = #{id}
+	</select>
+
+	<!-- id: 메소드명이라고 생각하기 , resultType : 반환 타입 -->
+	<insert id="insertMember" parameterType="MemberVO">
+		INSERT INTO
+		member(user_id, user_pw, user_name, user_birth, user_email,
+		user_phone, user_addr, manager)
+		VALUES ( #{userId}, #{userPw},
+		#{userName}, #{userBirth}, #{userEmail}, #{userPhone}, #{userAddr},
+		#{manager})
+	</insert>
+
+	<update id="updateMember" parameterType="MemberVO">
+		UPDATE member
+		SET user_pw = ${userPw}, user_name = ${userName}, user_birth = #{userBirth}, user_email = #{userEmail}, user_phone=#{userPhone}, user_addr = #{userAddr}
+		WHERE user_pw = ${userPw} AND user_id = ${userId}
+	</update>
+
+
+
+
+</mapper>
