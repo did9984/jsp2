@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+  <!--  namespace : 클래스 라고 생각하기 -->
+<mapper namespace="com.yedam.product.mapper.ProductMapper">
+  <!--  리스트조회 -->
+	<select id="getList" resultType="ProductVO">
+	  SELECT * FROM product
+	</select>
+  
+  <select id="searchProducts" parameterType="string"
+		resultType="ProductVO">
+		  SELECT *
+    		FROM product
+    	   WHERE prod_name LIKE '%${query}%'
+	</select>
+  
+	<select id="getProduct" resultType="ProductVO">
+	<!--  상세조회           productList.jsp에서 dduck라고 줌-->
+   	 SELECT * FROM product WHERE prod_Code=#{dduck}
+	</select>  
+  
+  	<insert id="addCart" parameterType="CartVO">
+  	  insert into cart 
+  	  values(cart_seq.NextVAL, #{userId}, #{prodCode}, #{cartQuantity}, #{cartPrice})
+  	</insert>
+  
+  	<select id="checkCart" parameterType="CartVO" resultType="CartVO">
+		select * from cart 
+		where user_id = #{userId} and prod_code = #{prodCode}
+	</select>
+  
+  	<select id="cartList" parameterType="String" resultType="CartVO">
+	  select cart_id, user_id, main_image, prod_name, prod_price, cart_quantity, cart_price
+		from cart c LEFT OUTER JOIN product p
+  		  on c.prod_code = p.prod_code
+	   where user_id = #{id}
+	</select>
+	
+	<update id="modifyCount" parameterType="CartVO">
+		update cart set cart_quantity=#{cartQuantity}, cart_price=#{cartPrice} where cart_id = #{cartId}
+	</update>
+	
+	<delete id="deleteCart" parameterType="Int">
+		delete from cart where cart_id = #{cartId}
+	</delete>
+  
+  	<select id="orderCart" parameterType="Int" resultType="CartVO">
+  		SELECT *
+		  FROM cart c LEFT OUTER JOIN product p
+  		    ON c.prod_code = p.prod_code LEFT OUTER JOIN member m
+  			ON c.user_id = m.user_id
+		 WHERE cart_id = #{cartId}
+  	</select>
+</mapper>

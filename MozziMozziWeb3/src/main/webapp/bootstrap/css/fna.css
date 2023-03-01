@@ -1,0 +1,119 @@
+@charset "UTF-8";
+/* 폰트 추가*/
+/* 굵음 */
+@font-face {
+  font-family: "ON_IGothic";
+  src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_eleven@1.0/ON-IGothic.woff")
+    format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
+
+/* 일반 */
+@font-face {
+  font-family: "Handon3gyeopsal600g";
+  src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_seven@1.2/Handon3gyeopsal600g.woff")
+    format("woff");
+  font-weight: 200;
+  font-style: normal;
+}
+
+/* html 전체 드래그 방지 */
+html {
+  -ms-user-select: none;
+  -moz-user-select: -moz-none;
+  -webkit-user-select: none;
+  user-select: none;
+}
+body {
+  margin: 0;
+}
+.nav_a {
+  text-decoration: none;
+  color: #333;
+}
+
+/*네비게이션 메인 클래스(삭제 시 icon 사라짐)*/
+.nav_top {
+  overflow: hidden;
+  float: left;
+  height: 55px;
+  text-align: center;
+  padding: 16px 50px 0 48px;
+  color: #333;
+  line-height: 20px;
+  display: table;
+  margin: auto;
+  padding: 0;
+  width: 100%;
+  margin-bottom: 50px;
+}
+
+/*nav li set*/
+.nav_main > li {
+  display: inline-block;
+  left: 50px;
+  font-size: 20px;
+  vertical-align: top;
+}
+
+/*행 간격 맞추려고 line height 조정*/
+.nav_a > span,
+.nav_a > input {
+  line-height: 50px;
+}
+.bar {
+  background-color: #fb9832;
+  width: 80%;
+  height: 3px;
+  margin: 0 auto;
+  margin-top: 140px;
+  margin-bottom: 50px;
+}
+.faq {
+  letter-spacing: 2px;
+  font-family: "ON_IGothic";
+  font-size: 30px;
+  line-height: 30px;
+  text-align: center;
+  margin-bottom: 30px;
+}
+.small {
+  font-size: 20px;
+}
+.qna {
+  text-align: center;
+  font-family: "Hi Melody", cursive;
+}
+.faq_q {
+  font-size: 40px;
+  margin-bottom: 20px;
+}
+.faq_a {
+  font-size: 30px;
+  opacity: 0.8;
+  margin-bottom: 40px;
+}
+ul {
+  list-style: none;
+}
+hr {
+  width: 80%;
+}
+
+/*text font, spacing set*/
+.txt {
+  letter-spacing: 2px;
+  font-family: "ON_IGothic";
+}
+.txt_top {
+  letter-spacing: 2px;
+  font-family: "ON_IGothic";
+  font-size: 50px;
+  line-height: 50px;
+}
+/*inputform color*/
+strong {
+  color: #0abde3;
+}
+/*# sourceMappingURL=top.css.map */
