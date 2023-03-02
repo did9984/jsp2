@@ -1,4 +1,4 @@
-package com.yedam.admin.command;
+package com.yedam.customer.command;
 
 import java.io.IOException;
 
@@ -6,19 +6,13 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.yedam.admin.service.AdminService;
-import com.yedam.admin.service.AdminServiceImpl;
 import com.yedam.common.Command;
 
-public class goodsmaster implements Command {
+public class CustomerNoticeControl implements Command {
 
 	@Override
 	public String exec(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-
-		AdminService service = new AdminServiceImpl();
-		req.setAttribute("list", service.adminPordList());
-		
-		return "admin/goodsmaster.tiles";
+		return "customer/customerNotice.tiles";
 	}
 
 }

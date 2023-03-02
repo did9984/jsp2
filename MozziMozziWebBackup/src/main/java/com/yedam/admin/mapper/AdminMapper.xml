@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+  <!--  namespace : 클래스 라고 생각하기 -->
+<mapper namespace="com.yedam.admin.mapper.AdminMapper">
+
+<!--  관리자 제품등록 values는 productVO에 있는 그대로 쓰기 -->
+  <insert id="insertProduct" parameterType="AdminProductVO">  	  
+    INSERT INTO product (prod_code, prod_name, prod_price, prod_category, main_image, detail_image)
+    VALUES(#{prodCode}, #{prodName}, #{prodPrice}, #{prodCategory},#{mainImage},#{detailImage})    
+  </insert>  
+
+<!-- 관리자 상품목록 -->  
+  <select id="selectList" resultType="AdminProductVO">
+    SELECT * FROM product ORDER BY prod_code desc
+  </select>
+
+	<select id="getProduct" parameterType="String" resultType="AdminProductVO">
+	<!--  상세조회           adminProductList.jsp에서 dduck라고 줌-->
+	  	 SELECT * FROM product WHERE prod_Code=#{dduck}
+	</select>     
+  
+</mapper>
