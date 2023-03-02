@@ -22,4 +22,14 @@
 	  	 SELECT * FROM product WHERE prod_Code=#{dduck}
 	</select>     
   
+  <!-- 관리자 전체주문관리 전체조회 -->  
+  <select id="orderList" resultType="AdminOrderVO">
+    SELECT * FROM product_order 
+  </select>
+   <!-- 관리자 전체주문관리 검색 -->  
+  <select id="searchList" resultType="AdminOrderVO">
+    SELECT order_no,status,order_date,total_price,pay_method,product_name FROM product_order
+    where product_name = #{productName}; 
+  </select>
+  
 </mapper>

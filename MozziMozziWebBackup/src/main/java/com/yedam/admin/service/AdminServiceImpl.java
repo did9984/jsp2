@@ -6,6 +6,7 @@ import java.util.List;
 import org.apache.ibatis.session.SqlSession;
 
 import com.yedam.admin.mapper.AdminMapper;
+import com.yedam.admin.vo.AdminOrderVO;
 import com.yedam.admin.vo.AdminProductVO;
 import com.yedam.common.DataSource;
 
@@ -38,5 +39,17 @@ public class AdminServiceImpl implements AdminService {
 	@Override
 	public AdminProductVO getProduct(String prodCode) {
 		return mapper.getProduct(prodCode);
+	}
+    // 관리자 상품 전체 조회
+	@Override
+	public List<AdminOrderVO> orderList() {
+	
+		return mapper.orderList();
+	}
+	// 관리자 주문 상품 검색
+	@Override
+	public List<AdminOrderVO> searchList(String productName) {
+	
+		return mapper.searchList(productName);
 	}
 }

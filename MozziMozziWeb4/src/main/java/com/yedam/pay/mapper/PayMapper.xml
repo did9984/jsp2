@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+<!--  namespace : 클래스 라고 생각하기 -->
+<mapper namespace="com.yedam.pay.mapper.PayMapper">
+
+	<insert id="orderAdd" parameterType = "OrderVO">
+	
+		insert into product_order( order_no
+								 , user_id
+								 , total_price
+								 , pay_method
+								 , addressee
+								 , addressee_addr
+								 , addressee_phone
+								 , delivery_request)
+		values (  #{orderNo}
+				, #{userId}
+				, #{totalPrice}
+				, #{payMethod}
+				, #{addressee}
+				, #{addresseeAddr}
+				, #{addresseePhone}
+				, #{deliveryRequest})
+	
+	</insert>
+	
+	<insert id="orderItemAdd" parameterType = "OrderItemVO">
+		
+		insert into product_orderItem( item_no
+									 , order_no
+									 , prod_code
+									 , quantity
+									 , item_price)
+		values(   itemNo_seq.NEXTVAL
+				, #{orderNo}
+				, #{prodCode}
+				, #{quantity}
+				, #{itemPrice})
+	
+	</insert>
+	
+	<update id="salesUpdate" parameterType ="String">
+		update product 
+		   set sales = sales + 1 
+		 where prod_code = #{prodCode}
+	</update>
+	
+	<delete id="deleteCart" parameterType ="Int">
+		delete from cart where cart_id = #{cartId}
+	</delete>
+
+</mapper>

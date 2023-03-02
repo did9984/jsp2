@@ -23,5 +23,6 @@ public interface ProductService {
 	
 	// 주문서
 	public CartVO orderCart(int cartId); // 주문서에 담을 장바구니(단건조회)
+	public List<ProductVO> productListPresent(String prodCategory);
 	
 }

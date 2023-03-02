@@ -75,12 +75,20 @@ public class ProductServiceImpl implements ProductService {
 	}
 	@Override
 	public List<ProductVO> searchProducts(String query) {
-		System.out.println(query);
+	
 		return mapper.searchProducts(query);
 	}
+	@Override
+	public List<ProductVO> getListPresent(String prodCategory) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	@Override
 	public List<ProductVO> productListPresent(String prodCategory) {
 		// TODO Auto-generated method stub
-		return mapper.getListPresent(prodCategory);
+		return null;
 	}
+	
+	
 
 }
