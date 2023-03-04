@@ -1,0 +1,82 @@
+@import url("https://fonts.googleapis.com/css2?family=Gaegu&family=Noto+Sans+KR:wght@700&display=swap");
+
+#container {
+  margin: 0 auto;
+  font-family: "Noto Sans KR", sans-serif;
+}
+
+#notice_form {
+  text-align: center;
+  padding: 0px;
+}
+
+#notice_form ul {
+  list-style: none;
+  padding: 0px;
+}
+
+textarea {
+  resize: vertical;
+}
+
+.notice_btn {
+  margin: 0 auto;
+}
+
+.not_btn {
+  background-color: orange;
+  border-radius: 5px;
+  border: none;
+  width: 100px;
+  height: 40px;
+  color: aliceblue;
+  margin-right: 5px;
+}
+
+.not_btn:hover {
+  background-color: aliceblue;
+  color: orange;
+}
+
+#notice_writer {
+  font-family: "Gaegu";
+  font-size: 25px;
+}
+
+#notice_title {
+  margin-right: 40px;
+}
+
+.notice_form p {
+  margin-top: 10px;
+  text-align: center;
+}
+
+#wri_txt {
+  font-size: 20px;
+  position: relative;
+  top: 2px;
+  margin-right: 10px;
+}
+
+#ma_bot {
+  margin-bottom: 15px;
+}
+
+#notice_title {
+  width: 300px;
+  height: 28px;
+}
+
+.b_der {
+  border-radius: 5px;
+  border: 2px solid orange;
+}
+
+.writer_title {
+  font-family: "Noto Sans KR", sans-serif;
+  font: 40px bold;
+  text-align: center;
+  margin-top: 50px;
+  margin-bottom: 50px;
+}

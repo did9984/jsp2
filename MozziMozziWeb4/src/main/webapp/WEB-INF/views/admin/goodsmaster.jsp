@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script> 
 <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
@@ -140,35 +141,16 @@ td{
 			<h3 class="inner_title">전체 ? 건 </h3>
 			
 			<table class="mgr_table verHead">
+			
+									
+								
 				<tr>
+				<form action="goodsmasterSearch.do" method="get" id="search_form">
 					<th>제품명</th>
 					<td>
-						<select id="p_select" name ="pnameList" onchange = "listSelect()">
-						<option value ="">제품명 선택</option>
+						<input name ="productName" value="">
+					</td>
 						
-						<option value ="흰콩 쑥개떡">흰콩 쑥개떡</option>
-						
-						<option value ="오색찹쌀떡">오색찹쌀떡</option>
-						
-						<option value ="망개떡">망개떡</option>
-						
-						<option value ="수고했어 찹쌀떡">수고했어 찹쌀떡</option>
-						
-						<option value ="크림치즈 찰떡 2종">크림치즈 찰떡 2종</option>
-						
-						<option value ="오색보리앙금절편 2종">오색보리앙금절편 2종</option>
-						
-						<option value ="아이스 찰떡 3종">아이스 찰떡 3종</option>
-						
-						<option value ="방울떡">방울떡</option>
-						
-						<option value ="[제주특산품] 오메기떡">[제주특산품] 오메기떡</option>
-						
-						<option value ="찰편 2종">찰편 2종</option>
-								
-						</select>		
-						<input name ="p_name" value="">
-					</td>		
 				</tr>
 				<tr>
                     <th>
@@ -178,8 +160,9 @@ td{
 					<td>
                         <input name ="p_date1" size="20"  value="20191123"> &nbsp; ~ &nbsp;
 						<input name ="p_date2" size="20" value="20191223">			
-                        <input id="search_btn" type="button"  value="검색" onclick="check()">
+                        <input id="search_btn" type="button"  value="검색" onclick="document.getElementById('search_form').submit()">
 					</td>
+					</form>	
 				</tr>	
 			</table>
 				
@@ -200,69 +183,26 @@ td{
 					<th>주문날짜</th>
 					<th>결제방법</th>
 					<th>결제금액</th>
-				</tr>			
-								
+				</tr>	
+				
+                
+               
+               
+				<c:forEach var="order" items="${orderList}">				
 					<tr>
 					<td>
 						<input class="checkbox" type ="checkbox" name="fch" value="4" onclick="chk()" >
 					</td>						
-					<td><a href="goods_view.jsp?p_code=4">4</a></td>
-					<td>흰콩 쑥개떡</td>
-					<td>13500</td>
-					<td>2019-12-20</td>
-					<td>1</td>
-					<td>1</td>		
+					<td>${order.orderNo} </td>
+					<td>${order.productName} </td>
+					<td>${order.totalPrice}</td>
+					<td>${order.orderDate}</td>
+					<td>${order.payMethod}</td>
+					<td>${order.totalPrice} </td>		
 				</tr>
-						
-					<tr>
-					<td>
-						<input class="checkbox" type ="checkbox" name="fch" value="6" onclick="chk()" >
-					</td>						
-					<td><a href="goods_view.jsp?p_code=6">6</a></td>
-					<td>망개떡</td>
-					<td>10000</td>
-					<td>2019-12-20</td>
-					<td>1</td>
-					<td>0</td>		
-				</tr>
-						
-					<tr>
-					<td>
-						<input class="checkbox" type ="checkbox" name="fch" value="10" onclick="chk()" >
-					</td>						
-					<td><a href="goods_view.jsp?p_code=10">10</a></td>
-					<td><a href="goods_view.jsp?p_code=10">아이스 찰떡 3종</a></td>
-					<td>4200</td>
-					<td>2019-12-20</td>
-					<td>1</td>
-					<td>10</td>		
-				</tr>
-						
-					<tr>
-					<td>
-						<input class="checkbox" type ="checkbox" name="fch" value="11" onclick="chk()" >
-					</td>						
-					<td><a href="goods_view.jsp?p_code=11">11</a></td>
-					<td>방울떡</td>
-					<td>3900</td>
-					<td>2019-12-20</td>
-					<td>1</td>
-					<td>10</td>		
-				</tr>
-						
-					<tr>
-					<td>
-						<input class="checkbox" type ="checkbox" name="fch" value="13" onclick="chk()" >
-					</td>						
-					<td><a href="goods_view.jsp?p_code=13">13</a></td>
-					<td>[제주특산품] 오메기떡</td>
-					<td>5000000</td>
-					<td>2019-12-20</td>
-					<td>0</td>
-					<td>1</td>		
-				</tr>
-			
-			
+				</c:forEach>		
+					
+			 		
 			
         </table>
         <div class="submit_wrapper">
@@ -304,7 +244,7 @@ function allChk() {
 		f=document.rFrm;
 		for(i=0; i<f.fch.length;i++){
 			//alert(f.fch[i].value);
-			if(f.fch[i].checked){ //fch 체크박스가 체크가 된 경우
+			if(f.fch[i].checked =true){ //fch 체크박스가 체크가 된 경우
 				f.delete.disabled = false;
 				f.update.disabled = false;//버튼의 활성화
 			return; //밑에 있는 체크박스의 체크 유무는 무의미

@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration
+  PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-config.dtd">
+
+<configuration>
+  <properties resource="config/config.properties">
+  </properties>
+
+  <settings>
+    <setting name="mapUnderscoreToCamelCase" value="true"/>
+    <setting name="jdbcTypeForNull" value="NULL" />
+  </settings>
+
+  <typeAliases>
+  	<!-- Member -->
+  	<typeAlias alias="MemberVO" type="com.yedam.member.vo.MemberVO" />
+  	
+  	<!--  Admin -->
+  	<typeAlias alias="AdminProductVO" type="com.yedam.admin.vo.AdminProductVO" />
+	<typeAlias alias="AdminReviewVO" type="com.yedam.admin.vo.AdminReviewVO" />  	
+  	
+  	<!-- Product -->
+    <typeAlias alias="ProductVO" type="com.yedam.product.vo.ProductVO" />
+    <typeAlias alias="CartVO" type="com.yedam.product.vo.CartVO" />
+    <typeAlias alias="ReviewVO" type="com.yedam.product.vo.ReviewVO" /> 
+        
+    <!-- Customer -->
+    <typeAlias alias="NoticeVO" type="com.yedam.customer.vo.NoticeVO" />
+    <typeAlias alias="QnaVO" type="com.yedam.customer.vo.QnaVO" />
+    
+    <!-- Pay -->
+    <typeAlias alias="OrderVO" type="com.yedam.pay.vo.OrderVO" />
+    <typeAlias alias="OrderItemVO" type="com.yedam.pay.vo.OrderItemVO" />
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <typeAlias alias="AdminOrderVO" type="com.yedam.admin.vo.AdminOrderVO" />
+    
+  </typeAliases>
+
+  <environments default="development">
+    <environment id="development">
+      <transactionManager type="JDBC"/>
+      <dataSource type="POOLED">
+        <property name="driver" value="${driver}"/>
+        <property name="url" value="${url}"/>
+        <property name="username" value="${username}"/>
+        <property name="password" value="${password}"/>
+      </dataSource>
+    </environment>
+  </environments>
+
+  <mappers>
+    <mapper class="com.yedam.product.mapper.ProductMapper"/>
+    <mapper class="com.yedam.member.mapper.MemberMapper"/>
+    <mapper class="com.yedam.admin.mapper.AdminMapper"/>
+    <mapper class="com.yedam.customer.mapper.CustomerMapper"/>
+    <mapper class="com.yedam.mypage.mapper.MypageMapper"/>
+    <mapper class="com.yedam.pay.mapper.PayMapper"/>
+  </mappers>
+
+</configuration>

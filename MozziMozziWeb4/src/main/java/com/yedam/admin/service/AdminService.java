@@ -2,6 +2,7 @@ package com.yedam.admin.service;
 
 import java.util.List;
 
+import com.yedam.admin.vo.AdminOrderVO;
 import com.yedam.admin.vo.AdminProductVO;
 
 public interface AdminService {
@@ -17,10 +18,9 @@ public interface AdminService {
 	//관리자 상품조회
 	public AdminProductVO getProduct(String prodCode);
 	
-	//상품수정
-	public int modifyProduct(AdminProductVO product);
-	
-	//상품삭제 pCode는 DeleteProduct에서 지정한 값                    
-	public int removeProduct(String pCode);
+	//관리자 주문상품조회
+	public List<AdminOrderVO> orderList();
+    //관리자 상품 검색 
+	public List<AdminOrderVO> searchList(String productName);
 	
 }

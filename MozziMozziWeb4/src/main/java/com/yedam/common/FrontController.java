@@ -16,6 +16,7 @@ import com.yedam.admin.command.AdminProductListControl;
 import com.yedam.admin.command.DeleteProduct;
 import com.yedam.admin.command.DetailImgUpdate;
 import com.yedam.admin.command.GoodsMasterControl;
+import com.yedam.admin.command.GoodsMasterControl2;
 import com.yedam.admin.command.MainImgUpdate;
 import com.yedam.admin.command.MemberListControl;
 import com.yedam.admin.command.ModifyProduct;
@@ -114,6 +115,7 @@ public class FrontController extends HttpServlet {
 		map.put("/myInfoDel.do", new MyInfoDelControl()); //회원탈퇴)
 		map.put("/search.do", new ProductControll());//검색
 		
+		
 		// 관리자 
 		map.put("/memberList.do", new MemberListControl()); // 회원리스트
 		map.put("/adminProductAdd.do", new AdminProductAddControl()); // 관리자 : 상품등록
@@ -122,7 +124,7 @@ public class FrontController extends HttpServlet {
 		map.put("/productManage.do", new ProductManageControl()); // 관리자 : 상품관리(수정, 삭제)
 		map.put("/reviewListManage.do", new ReviewListManageControl()); // 리뷰 관리 페이지
 		map.put("/goodsmaster.do", new GoodsMasterControl()); // 전체 주문 페이지
-		
+		map.put("/goodsmaster2.do", new GoodsMasterControl2()); // 전체 주문 검색
 		map.put("/modifyProduct.do", new ModifyProduct()); // 관리자 : 상품 수정
         map.put("/deleteProduct.do", new DeleteProduct()); // 관리자 : 상품 삭제
         map.put("/mainImgUpdate.do", new MainImgUpdate()); // 이미지 변경 페이지

@@ -16,9 +16,14 @@ public class GoodsMasterControl implements Command {
 	public String exec(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
 		AdminService service = new AdminServiceImpl();
-		req.setAttribute("list", service.adminPordList());
 		
-		return "admin/goodsmaster.tiles";
+		
+		
+		req.setAttribute("orderList", service.orderList());
+		
+		
+		
+		return "admin/Goodsmaster.tiles";
 	}
 
 }

@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+<!--  namespace : 클래스 라고 생각하기 -->
+<mapper namespace="com.yedam.pay.mapper.PayMapper">
+
+	<insert id="orderAdd" parameterType = "OrderVO">
+	
+		insert into product_order( order_no
+								 , user_id
+								 , total_price
+								 , pay_method
+								 , buy_prodname
+								 , addressee
+								 , addressee_addr
+								 , addressee_phone
+								 , delivery_request)
+		values (  #{orderNo}
+				, #{userId}
+				, #{totalPrice}
+				, #{payMethod}
+				, #{buyProdname}
+				, #{addressee}
+				, #{addresseeAddr}
+				, #{addresseePhone}
+				, #{deliveryRequest})
+	
+	</insert>
+	
+	<insert id="orderItemAdd" parameterType = "OrderItemVO">
+		
+		insert into product_orderItem( item_no
+									 , order_no
+									 , prod_code
+									 , prod_name
+									 , quantity
+									 , item_price)
+		values(   itemNo_seq.NEXTVAL
+				, #{orderNo}
+				, #{prodCode}
+				, #{prodName}
+				, #{quantity}
+				, #{itemPrice})
+	
+	</insert>
+	
+	<update id="salesUpdate" parameterType ="String">
+		update product 
+		   set sales = sales + 1 
+		 where prod_code = #{prodCode}
+	</update>
+	
+	<delete id="deleteCart" parameterType ="Int">
+		delete from cart where cart_id = #{cartId}
+	</delete>
+	
+	<select id="orderEnd" parameterType ="String" resultType="OrderVO" >
+		select m.user_name, p.order_no, p.total_price , p.buy_prodname
+		  from product_order p JOIN member m
+			ON p.user_id = m.user_id
+		 where p.order_no = #{orderNo}
+	</select>
+	
+	<select id="orderList" parameterType ="String" resultType="OrderVO">
+		select * 
+  		  from product_order
+ 		 where user_id = #{id}
+ 		 order by order_date DESC
+	</select>
+	
+	<select id="orderDetail" parameterType ="String" resultType="OrderVO">
+		select *
+		  from product_order p JOIN member m
+		  	ON p.user_id = m.user_Id
+		 where order_no = #{orderNo}
+	</select>
+	
+	<select id="orderDetailItem" parameterType ="String" resultType="OrderItemVO">
+		select *
+		  from product_orderItem i JOIN product p
+  			ON i.prod_code = p.prod_code
+		 where order_no = #{orderNo}
+	</select>
+
+</mapper>
