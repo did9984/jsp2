@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+  <!--  namespace : 클래스 라고 생각하기 -->
+<mapper namespace="com.yedam.mypage.mapper.MypageMapper">
+
+  <insert id="reviewAdd" parameterType="MyReviewVO">
+  	insert into review
+  	values(	  review_seq.nextval
+  			, #{userId}
+  			, #{reContent}
+  			, #{reImage}
+  			, #{starRating}
+  			, #{orderNo}
+  			, #{prodCode})
+  </insert>
+  
+  
+</mapper>

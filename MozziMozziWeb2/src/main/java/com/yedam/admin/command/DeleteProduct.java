@@ -20,12 +20,14 @@ public class DeleteProduct implements Command {
 		
 		AdminService service = new AdminServiceImpl();
 		
-		int r = Integer.parseInt(service.orderCancel(pCode));
+		int r = service.orderCancel(pCode);
 
 		if(r > 0) {
-			return "{\"retCode\":\"Success\"}.json";
+			System.out.println("삭제성공");
+			return "adminProductList.do";
 		}else {
-			return "{\"retCode\":\"Fail\"}.json";
+			System.out.println("삭제실패");
+			return "admin/productManage.tiles";
 		}
 		
 	}

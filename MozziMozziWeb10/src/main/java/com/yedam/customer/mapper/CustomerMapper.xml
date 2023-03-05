@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+  <!--  namespace : 클래스 라고 생각하기 -->
+<mapper namespace="com.yedam.customer.mapper.CustomerMapper">
+
+  <insert id="insertNotice" parameterType="NoticeVO" >
+  
+  INSERT INTO notice
+  VALUES ( notice_seq.NEXTVAL, #{title}, #{content}, SYSDATE, 0)
+  
+  </insert>
+  
+
+  <select id="viewQnA"  resultType="QnaVO">
+   
+	SELECT 
+      					qna_no
+                      , qna_title
+                      , qna_content
+                      , write_date
+                      , category
+      				  , hit_count                      
+                      , user_id
+      				  ,(SELECT COUNT(*) FROM customer_qna) AS count,
+      					ROW_NUMBER() OVER(ORDER BY write_date) as num
+  	FROM customer_qna
+  	ORDER BY write_date DESC
+	</select>
+
+  <select id="selectNotice" resultType="NoticeVO">
+ 
+ 	SELECT 
+      	no,
+      	title,
+      	content,
+      	notice_date,
+      	(SELECT COUNT(*) FROM notice) AS count,
+      	ROW_NUMBER() OVER(ORDER BY notice_date) as num, 
+      	hit_count
+  	FROM notice
+  	ORDER BY notice_date DESC
+  </select>
+  
+  <select id="getNotice" parameterType="String" resultType="NoticeVO">
+  
+  SELECT *
+  FROM notice
+  WHERE no =#{ntno}
+  
+  </select>
+  
+  <update id="updateNotice" parameterType="NoticeVO">
+  
+  UPDATE notice
+  SET title= #{title}, content = #{content} 
+  WHERE no = #{no}
+  
+  </update>
+  
+  <delete id="deleteNotice" parameterType="int">
+  
+  DELETE 
+  FROM notice
+  WHERE no=#{no}
+   
+  </delete>
+  
+  <insert id="addQna" parameterType="QnaVO">
+  
+ INSERT INTO 
+    customer_qna(       qna_no
+                      , qna_title
+                      , qna_content
+                      , write_date
+                      , category
+                      , hit_count
+                      , user_id)
+  VALUES(     
+  			  qna_seq.NEXTVAL
+  			, #{qnaTitle}
+  			, #{qnaContent}
+  			, SYSDATE
+  			, #{category}
+  			, 0
+  			, #{userId})
+  			
+  </insert>
+  
+  <select id="getQna" parameterType="String" resultType="QnaVO">
+  
+  SELECT *
+  FROM customer_qna
+  WHERE qna_no =#{qnano}
+  
+  </select>
+  
+
+  <select id="getMyQna" parameterType="String" resultType="QnaVO">
+  
+  SELECT *
+  FROM customer_qna
+  WHERE qna_no =#{qnano}
+  
+  </select>
+
+    	  	<!-- 총 게시글 갯수 출력 -->
+	<select id="countBoard" resultType="int">
+		SELECT COUNT(*) FROM customer_qna
+		
+	</select>
+	
+	<!-- 페이징 처리 후 게시글 조회 -->
+	<select id="selectBoard" resultType="QnaVO">
+		SELECT * 
+		FROM (
+			SELECT ROWNUM RN, A.* 
+				FROM (
+				SELECT * 
+				FROM customer_qna 
+				ORDER BY qna_no DESC
+				) A
+			)
+		WHERE RN BETWEEN #{start} AND #{end}
+	</select>
+
+  
+</mapper>
+
+

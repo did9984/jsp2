@@ -18,6 +18,7 @@ import com.yedam.admin.command.DetailImgUpdate;
 import com.yedam.admin.command.GoodsMasterControl;
 
 import com.yedam.admin.command.GoodsMasterSearchControl;
+import com.yedam.admin.command.GoodsMaterChangeStatusControl;
 import com.yedam.admin.command.GoodsMaterOrderCancel;
 import com.yedam.admin.command.MainImgUpdate;
 import com.yedam.admin.command.MemberListControl;
@@ -136,6 +137,7 @@ public class FrontController extends HttpServlet {
 		map.put("/reviewListManage.do", new ReviewListManageControl()); // 리뷰 관리 페이지
 		map.put("/goodsmaster.do", new GoodsMasterControl()); // 전체 주문 페이지
 		map.put("/orderCancel.do", new GoodsMaterOrderCancel());// 주문 취소
+		map.put("/changeStatus.do", new GoodsMaterChangeStatusControl());// 주문 상태 변경
 		map.put("/modifyProduct.do", new ModifyProduct()); // 관리자 : 상품 수정
         map.put("/deleteProduct.do", new DeleteProduct()); // 관리자 : 상품 삭제
         map.put("/mainImgUpdate.do", new MainImgUpdate()); // 이미지 변경 페이지
